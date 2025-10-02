@@ -91,4 +91,5 @@ def register_page(request):
         user.save()
         messages.info(request, "Account created Successfully!")
         return redirect('/register/')
+    # Render the registration page template via get request
     return render(request,'register.html')

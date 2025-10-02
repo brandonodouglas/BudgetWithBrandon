@@ -22,17 +22,22 @@ from django.conf import settings   # Application settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # Static files serving
 from rest_framework import routers
 from authentication import views
+from django.views.generic.base import TemplateView  # new
+
 
 
 router = routers.DefaultRouter()
 router.register(r'transactions', views.TransactionView, 'transaction')
 
 urlpatterns = [
-    path('home/', home, name="homepage"),
     path('admin/', admin.site.urls),
-    path('login/', login_page, name='login_page'),
-    path('register/', register_page, name='register'),
-    path('api/', include(router.urls)),
+    
+    # Template related stuff
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),  # new
+    path("accounts/", include("accounts.urls")), 
+    # accounts related stuff
+    path('accounts/', include('django.contrib.auth.urls')),
+    
 ]
 
 
