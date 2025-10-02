@@ -62,7 +62,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,3 +140,6 @@ MEDIA_URL = '/media/'
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
+
+# When the
+LOGIN_REDIRECT_URL = "/"  # new

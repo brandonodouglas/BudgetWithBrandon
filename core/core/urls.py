@@ -28,11 +28,10 @@ router = routers.DefaultRouter()
 router.register(r'transactions', views.TransactionView, 'transaction')
 
 urlpatterns = [
-    path('home/', home, name="homepage"),
     path('admin/', admin.site.urls),
-    path('login/', login_page, name='login_page'),
-    path('register/', register_page, name='register'),
-    path('api/', include(router.urls)),
+    # accounts related stuff
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
 
 

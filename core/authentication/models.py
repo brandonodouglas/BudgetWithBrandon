@@ -41,3 +41,5 @@ class Transaction(models.Model):
     def _str_(self):
         return self.current_balance
 
+
+
