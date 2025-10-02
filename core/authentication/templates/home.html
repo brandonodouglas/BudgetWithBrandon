@@ -5,7 +5,16 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
+<h1>🏠 BudgetWithBrandon - Homepage</h1>
+<hr></hr>
+Hi {{ user.username }}! 👋
+<p>Welcome to BudgetWithBrandon,</p>
+<p>Currently, there are no transactions in your account, click below to add some and get started!</p>
+<!-- Form that deals with logging out, only can be done via POST -->
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Log Out</button>
+</form>
 {% else %}
 <p>You are not logged in</p>
 <a href="{% url 'login' %}">Log In</a>
