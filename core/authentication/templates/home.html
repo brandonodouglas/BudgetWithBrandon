@@ -10,6 +10,8 @@
 Hi {{ user.username }}! 👋
 <p>Welcome to BudgetWithBrandon,</p>
 <p>Currently, there are no transactions in your account, click below to add some and get started!</p>
+<!--Deals with password changes-->
+<p><a href="{% url 'password_change' %}">Password Change</a></p>
 <!-- Form that deals with logging out, only can be done via POST -->
 <form action="{% url 'logout' %}" method="post">
   {% csrf_token %}
@@ -17,6 +19,7 @@ Hi {{ user.username }}! 👋
 </form>
 {% else %}
 <p>You are not logged in</p>
+<p><a href="{% url 'password_reset' %}">Password Reset</a></p>
 <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 {% endblock %}
