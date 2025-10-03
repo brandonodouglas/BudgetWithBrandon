@@ -36,7 +36,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")), 
     # accounts related stuff
     path('accounts/', include('django.contrib.auth.urls')),
-    # path("transactions/", views.get_transactions, name='get_transactions' )
+    # path("transactions/", pytviews.get_transactions, name='get_transactions' )
 
 ]
 
