@@ -14,14 +14,7 @@ from django.shortcuts import render
 
 
 # https://docs.djangoproject.com/en/5.2/topics/forms/#the-view
-def get_transactions(request):
-    if request.method == 'POST':
-        form = TransactionForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect("")
-    else:
-        form = TransactionForm()
-    return render(request, "transactions.html", {"form": form})
+
 
 class TransactionView(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
@@ -29,7 +22,13 @@ class TransactionView(viewsets.ModelViewSet):
 
 # Landing page
 def home(request):
-    return render(request, 'home.html')
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("")
+    else:
+        form = TransactionForm()
+    return render(request, "home.html", {"form": form})
 
 # Called when user submits username and password in the view
 # If username is not registered, throws appropiate error message

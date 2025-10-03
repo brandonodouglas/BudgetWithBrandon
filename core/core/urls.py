@@ -32,11 +32,11 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Template related stuff
-    path("", TemplateView.as_view(template_name="home.html"), name="home"),  # new
+    path("", views.home, name="home"),  # new
     path("accounts/", include("accounts.urls")), 
     # accounts related stuff
     path('accounts/', include('django.contrib.auth.urls')),
-    path("transactions/", views.get_transactions, name='get_transactions' )
+    # path("transactions/", views.get_transactions, name='get_transactions' )
 
 ]
 
