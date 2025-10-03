@@ -27,17 +27,17 @@ from django.views.generic.base import TemplateView  # new
 
 
 router = routers.DefaultRouter()
-router.register(r'transactions', views.TransactionView, 'transaction')
+# router.register(r'transactions', views.TransactionView, 'transaction')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
     # Template related stuff
     path("", TemplateView.as_view(template_name="home.html"), name="home"),  # new
     path("accounts/", include("accounts.urls")), 
     # accounts related stuff
     path('accounts/', include('django.contrib.auth.urls')),
-    
+    path("transactions/", views.get_transactions, name='get_transactions' )
+
 ]
 
 

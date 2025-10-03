@@ -6,8 +6,22 @@ from django.contrib.auth.models import User
 from .models import *
 from rest_framework import viewsets
 from .serializers import TransactionSerializer
+from .forms import TransactionForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
 # Create your views here.
 
+
+# https://docs.djangoproject.com/en/5.2/topics/forms/#the-view
+def get_transactions(request):
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("")
+    else:
+        form = TransactionForm()
+    return render(request, "transactions.html", {"form": form})
 
 class TransactionView(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
