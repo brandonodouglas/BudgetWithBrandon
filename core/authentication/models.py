@@ -24,6 +24,12 @@ TAG_CHOICES = [
 # account - e.g. santander, monzo, halifax, monzo pot 1
 # description/ notes - extra data about each transaction
 # cleared - boolean of whether the transaction is cleared or not
+class Timeline(models.Model):
+    timeline_name = models.CharField()
+
+    def __str__(self):
+        return self.timeline_name
+
 
 class Transaction(models.Model):
     money_in = models.IntegerField()
@@ -36,10 +42,12 @@ class Transaction(models.Model):
     account = models.CharField()
     description = models.CharField()
     cleared = models.BooleanField()
+    timeline = models.ForeignKey(Timeline, on_delete=models.CASCADE, null=True)
 
+    def __str__(self):
+        return self.description
+    
 
-    def _str_(self):
-        return self.current_balance
 
 
 

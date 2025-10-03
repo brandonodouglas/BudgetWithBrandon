@@ -4,8 +4,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
-from rest_framework import viewsets
-from .serializers import TransactionSerializer
+from rest_framework import generics
+from .serializers import TransactionSerializer, TimelineSerializer
 from .forms import TransactionForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -14,11 +14,26 @@ from django.shortcuts import render
 
 
 # https://docs.djangoproject.com/en/5.2/topics/forms/#the-view
-
-
-class TransactionView(viewsets.ModelViewSet):
-    serializer_class = TransactionSerializer
+class TransactionListCreate(generics.ListCreateAPIView):
     queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
+
+class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
+
+class TimelineListCreate(generics.ListCreateAPIView):
+    queryset = Timeline.objects.all()
+    serializer_class = TimelineSerializer
+
+class TimelineDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Timeline.objects.all()
+    serializer_class = TimelineSerializer
+
+    
+
+
+
 
 # Landing page
 def home(request):

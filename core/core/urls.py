@@ -26,6 +26,8 @@ from django.views.generic.base import TemplateView  # new
 
 
 
+
+
 router = routers.DefaultRouter()
 # router.register(r'transactions', views.TransactionView, 'transaction')
 
@@ -37,7 +39,6 @@ urlpatterns = [
     # accounts related stuff
     path('accounts/', include('django.contrib.auth.urls')),
     # path("transactions/", pytviews.get_transactions, name='get_transactions' )
-
+    path('authentication/', include('authentication.urls'))
 ]
-
 
