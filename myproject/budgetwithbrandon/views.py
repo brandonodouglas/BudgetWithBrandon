@@ -63,17 +63,20 @@ def homepage(request):
 # About page
 def aboutpage(request):
     return render(request, "about.html")
-# view for if user wants to register
 
+# Register view
+def registerpage(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(homepage)
+    else:
+        form = UserCreationForm()
 
-
-
-    # Not sure what this extra command does like isn't his the else of all other REST API Methods?
-
-
+    return render(request, "users/register.html", {"form": form})
             
     
-
 
 
 

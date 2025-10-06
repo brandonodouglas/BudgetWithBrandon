@@ -45,6 +45,8 @@ Hi {{ user.username }}! 👋
 <hr>
 <a href="{% url 'login' %}">Log In</a> 
 <p>Forgot your password? Reset it <a href="{% url 'password_reset' %}">here</a></p>
+<p>Click sign up <a href="{% url 'register' %}">here</a></p>
+
 <p>Want to learn more? See: <a href="{% url 'about' %}">here</a></p>
 {% endif %}
 {% endblock %}
