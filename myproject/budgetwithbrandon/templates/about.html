@@ -1,0 +1,15 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+<p>Welcome to the about page.</p>
+<h1>BudgetWithBrandon</h1>
+<p>BudgetWithBrandon contains cutting edge financial analytics to help you track, forecast and manage your finances better and more accurately.</p>
+<a href="{% url 'home' %}">home</a>
+
+<hr>
+<p>Coded by @brandonodouglas 2025</p>
+{% endblock %}

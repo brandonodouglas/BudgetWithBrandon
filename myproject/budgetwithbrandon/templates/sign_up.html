@@ -1,0 +1,15 @@
+<!-- templates/registration/signup.html -->
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1>BudgetWithBrandon - Register Page</h1>
+<h2>Unlock powerful budgeting analytics without the stress.</h2>
+<h3>Sign up</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+    </form>
+{% endblock %}
