@@ -60,8 +60,28 @@ def registerpage(request):
             return redirect(homepage)
     else:
         form = RegistrationForm()
-
     return render(request, "users/register.html", {"form": form})
+
+# Password reset done view
+def passwordresetdonepage(request):
+    return render(request, "password_reset_done.html")
+
+# forgot your password view, i.e. password reset
+def forgotpasswordpage(request):
+    if request.method == "POST":
+        form = CustomPasswordResetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # redirect to login page
+            return redirect(passwordresetdonepage)
+    else:
+        form = CustomPasswordResetForm()
+    return render(request, "password_reset.html", {"form": form})
+
+# Login views
+
+
+
             
     
 

@@ -39,14 +39,17 @@ urlpatterns = [
   # path('password_reset_sent/', auth_views.PasswordResetDoneView.as_view(template_name = "password_reset_sent.html"), name ='password_reset_done'),
   # path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = "password_reset_form.html"), name ='password_reset_confirm'),
   # path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = "password_reset_done.html"), name ='password_reset_complete'),
+        path("accounts/", include("django.contrib.auth.urls")),
+
     path("accounts/login/", auth_views.LoginView.as_view(template_name="login.html")),
-    path("", views.homepage, name="home"),
+    # PASSWORD RESET HANDLING
+    path("accounts/password_reset/", views.forgotpasswordpage, name="password_reset"),
+    # Working on it
+    path("accounts/password_reset/done/", views.passwordresetdonepage, name="password_reset_done"),
+    path("accounts/reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path("accounts/reset/complete/", auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+    path("", views.homepage , name="home"),
     path('admin/', admin.site.urls),
     path("about/", views.aboutpage, name="about"),
     path("accounts/register/", views.registerpage, name="register"),
-    path("accounts/", include("django.contrib.auth.urls")),
-
-
-
-
 ]
