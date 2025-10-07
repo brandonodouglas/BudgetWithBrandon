@@ -28,8 +28,8 @@ router = routers.DefaultRouter()# https://www.pythontutorial.net/django-tutorial
 urlpatterns = [
     path("accounts/login/", auth_views.LoginView.as_view(template_name="login.html")),
     path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name="password_reset"),
-    path("accounts/password_reset/done/", views.passwordresetdonepage, name="password_reset_done"),
-    path("accounts/reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path("accounts/password_reset/done/", auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"), name="password_reset_done"),
+    path("accounts/reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"), name="password_reset_confirm"),
     path("accounts/reset/complete/", auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
     path("", views.homepage , name="home"),
     path('admin/', admin.site.urls),
