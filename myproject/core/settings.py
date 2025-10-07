@@ -150,9 +150,10 @@ LOGOUT_REDIRECT_URL = "home"  # new
 # Email SMTP Parameters
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PORT = 25
+EMAIL_HOST_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'brandondouglas247@gmail.com'
 # gmails app password for brandondouglas247@gmail.com with 2FA enabled
-EMAIL_HOST_PASSWORD = 'fxchuhifxbttvyca'
-
+EMAIL_HOST_PASSWORD = 'voywssqajncponce'
+EMAIL_USE_SSL = False  # Set to True if using SSL
+DEFAULT_FROM_EMAIL = 'brandondouglas247@gmail.com'  # Default sender email address

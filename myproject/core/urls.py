@@ -26,25 +26,8 @@ from django.contrib.auth.views import (
 router = routers.DefaultRouter()# https://www.pythontutorial.net/django-tutorial/django-password-reset/
 
 urlpatterns = [
-        # path("accounts/password_reset/", TemplateView.as_view(template_name="reset_password.html"), name="password_reset"),
-          # path('accounts/password_reset/', views.PasswordResetView, name='password_reset'),
-
-    # path('login/', views.login_view, name='login'),
-    # path('logout/', LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
-    # path('password_change', PasswordChangeView.as_view(template_name="users/password_change.html"), name="password_change"),
-    # path('users/', include('django.contrib.auth.urls')),
-    # 
-    # path("sign_up/", views.sign_up, name = "sign_up"),
-   # path('password_reset/', auth_views.PasswordResetView.as_view(template_name = "password_reset.html"), name ='password_reset'),
-  # path('password_reset_sent/', auth_views.PasswordResetDoneView.as_view(template_name = "password_reset_sent.html"), name ='password_reset_done'),
-  # path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name = "password_reset_form.html"), name ='password_reset_confirm'),
-  # path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name = "password_reset_done.html"), name ='password_reset_complete'),
-        path("accounts/", include("django.contrib.auth.urls")),
-
     path("accounts/login/", auth_views.LoginView.as_view(template_name="login.html")),
-    # PASSWORD RESET HANDLING
-    path("accounts/password_reset/", views.forgotpasswordpage, name="password_reset"),
-    # Working on it
+    path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name="password_reset"),
     path("accounts/password_reset/done/", views.passwordresetdonepage, name="password_reset_done"),
     path("accounts/reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path("accounts/reset/complete/", auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
@@ -52,4 +35,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("about/", views.aboutpage, name="about"),
     path("accounts/register/", views.registerpage, name="register"),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]

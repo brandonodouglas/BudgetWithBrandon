@@ -72,7 +72,7 @@ def forgotpasswordpage(request):
         form = CustomPasswordResetForm(request.POST)
         if form.is_valid():
             form.save()
-            # redirect to login page
+            # redirect to password reset done page
             return redirect(passwordresetdonepage)
     else:
         form = CustomPasswordResetForm()
