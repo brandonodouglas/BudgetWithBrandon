@@ -67,12 +67,12 @@ def aboutpage(request):
 # Register view
 def registerpage(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(homepage)
     else:
-        form = UserCreationForm()
+        form = RegistrationForm()
 
     return render(request, "users/register.html", {"form": form})
             
