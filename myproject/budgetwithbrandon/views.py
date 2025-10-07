@@ -19,19 +19,6 @@ from django.urls import reverse_lazy
 
             
 
-# Create your views here.
-def sign_up(request):
-    if request.method == "POST":
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request,user)
-            return redirect("/")
-
-            
-    else:
-        form = RegistrationForm()
-    return render(request, "sign_up.html", {"form": form})
     
     
 
@@ -64,7 +51,7 @@ def homepage(request):
 def aboutpage(request):
     return render(request, "about.html")
 
-# Register view
+# Register view - working 
 def registerpage(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
