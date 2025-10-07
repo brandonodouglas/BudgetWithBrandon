@@ -28,6 +28,7 @@ router = routers.DefaultRouter()# https://www.pythontutorial.net/django-tutorial
 
 # For help on the success_url see: https://stackoverflow.com/questions/52905645/django-password-reset-done-page-overriding-my-custom-url
 urlpatterns = [
+    path("accounts/password_change/", auth_views.PasswordChangeView.as_view(template_name="password_change.html"),name="password_change"),
     # !! PASSWORD RESET PATHS !!
     # Allows a user to reset their password by generating a one-time use link that can be used to reset the password, and sending that link to the user’s registered email address.
     path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html", success_url="success/"), name="password_reset"),
