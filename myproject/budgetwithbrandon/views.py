@@ -66,6 +66,9 @@ def registerpage(request):
 def passwordresetdonepage(request):
     return render(request, "password_reset_done.html")
 
+
+def PasswordResetSuccessView(request):
+    return render(request, "password_reset_success.html")
 # forgot your password view, i.e. password reset
 def forgotpasswordpage(request):
     if request.method == "POST":
