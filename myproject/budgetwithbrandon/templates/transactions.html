@@ -1,17 +1,27 @@
-<!-- templates/registration/login.html -->
-{% extends "base.html" %}
-
-{% block title %}Transactions{% endblock %}
-
-{% block content %}
-<h1>BudgetWithBrandon - Transaction Input Backend</h1>
-<p>Enter your transactions to be sent to the database</p>
-<!-- an empty action as shown, means that the form data will be posted back to the current URL of the page (which is what we want -->
-<!-- Will post to /transaction/ url-->
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
-<h2>Here are your transactions:</h2>
-{% endblock %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+</head>
+<body>
+    <h1>BudgetWithBrandon - Transaction Page</h1>
+    <hr>
+    <h2>Here are your transactions: </h2>
+        {% for transaction in transactions %}
+            <h1>{{ transaction.transaction_date}}</h1>
+            <p>{{ transaction.description }}</p>
+            <p>{{ transaction.payee }}</p>
+        {% empty %}
+        <p>Currently, there are no transactions added. How about adding some below? </p>
+            {% endfor %}
+    <h2>Add a New Transaction</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Transaction</button>
+    </form>
+</body>
+</html>

@@ -5,15 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
 from rest_framework import generics
-from .serializers import TransactionSerializer, TimelineSerializer
+from .serializers import TransactionSerializer
 from .forms import PSWDForm, RegistrationForm, TransactionForm, CustomPasswordResetForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import *
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-
+from .models import Transaction
 
 
 
@@ -31,14 +31,22 @@ class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
 
-class TimelineListCreate(generics.ListCreateAPIView):
-    queryset = Timeline.objects.all()
-    serializer_class = TimelineSerializer
 
-class TimelineDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Timeline.objects.all()
-    serializer_class = TimelineSerializer
 
+
+# Transaction handling redone
+def transactions_list(request):
+    transactions = Transaction.objects.all()
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirect to avoid duplicate submissions
+            return redirect('/transactions/')
+    else:
+        form = TransactionForm()
+    # Logic goes here
+    return render(request, 'transactions.html', {'transactions': transactions, 'form': form})
 
 
 
