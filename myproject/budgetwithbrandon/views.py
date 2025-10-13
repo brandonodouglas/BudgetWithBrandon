@@ -13,6 +13,12 @@ from django.contrib.auth.forms import *
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import *
+from .serializers import *
 
 
 
@@ -21,23 +27,6 @@ from django.urls import reverse_lazy
 
     
     
-
-# https://docs.djangoproject.com/en/5.2/topics/forms/#the-view
-class TransactionListCreate(generics.ListCreateAPIView):
-    queryset = Transaction.objects.all()
-    serializer_class = TransactionSerializer
-
-class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Transaction.objects.all()
-    serializer_class = TransactionSerializer
-
-class TimelineListCreate(generics.ListCreateAPIView):
-    queryset = Timeline.objects.all()
-    serializer_class = TimelineSerializer
-
-class TimelineDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Timeline.objects.all()
-    serializer_class = TimelineSerializer
 
 
 
