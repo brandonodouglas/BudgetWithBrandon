@@ -26,7 +26,6 @@ TAG_CHOICES = [
 # cleared - boolean of whether the transaction is cleared or not
 class Timeline(models.Model):
     timeline_name = models.CharField()
-
     def __str__(self):
         return self.timeline_name
 
