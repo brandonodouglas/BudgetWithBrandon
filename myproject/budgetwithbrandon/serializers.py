@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Timeline, Transaction
 
+
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction

@@ -19,12 +19,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import *
 from .serializers import *
+from rest_framework.viewsets import ModelViewSet
 
 
 
 
             
+# Serialization
+class TransactionViewSet(ModelViewSet):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
 
+class TimelineViewSext(ModelViewSet):
+    queryset = Timeline.objects.all()
+    serializer_class = TimelineSerializer
     
     
 

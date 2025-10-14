@@ -64,7 +64,9 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIR = {
-    os.path.join(BASE_DIR, 'public/static')
+    os.path.join(BASE_DIR, 'frontend/build/static'),
 }
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')
 MEDIA_URL = '/media/'
@@ -142,6 +144,11 @@ MEDIA_URL = '/media/'
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
+
+CORS_ALLOWED_ORIGINS = [
+     'http://localhost:3000'
+]
+
 
 # When the
 LOGIN_REDIRECT_URL = "home"  # new
